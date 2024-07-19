@@ -124,11 +124,11 @@ const PhotoGallery = ({
         </div>
       {galleryItems2.length===0?<Loader is/>: <>
         {showMore ? (
-          <div className="flex justify-center gap-[3%] max-sm:gap-[1%] flex-wrap">
+          <div className="flex justify-center gap-[2%] max-sm:gap-[1%] max-md:gap-[3%] flex-wrap">
             {galleryItems2.map((item: any) => (
               <div
               key={item.id}
-              className="w-1/5 max-md:w-[40%] max-sm:w-[47%] max-lg:w-1/4">
+              className="w-[23%] max-md:w-[40%] max-sm:w-[47%] max-lg:w-1/4">
                 <CardPost
                   title={item.title}
                   img={item.imageUrl}

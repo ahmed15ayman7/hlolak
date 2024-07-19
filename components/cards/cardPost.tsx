@@ -6,17 +6,17 @@ const CardPost = ({title,img,link,disc,time}:{title:string,img?:string,disc?:str
               <div className="p-4 py-8 max-sm:p-2 max-sm:py-4  md:mb-0 mb-6 flex flex-col justify-center items-center " style={{direction:"rtl"}}>
                 <Link className="w-full" href={link}>
                  {img && <div
-                    className={`bg-gray-300 h-56 max-md:h-40 max-md:w-64 ${disc?'max-sm:h-36 max-sm:w-48':'max-sm:h-36 max-sm:w-56'} w-80 rounded-lg shadow-md bg-cover bg-center`}
+                    className={`bg-gray-300 h-56  w-full rounded-lg shadow-md bg-cover bg-center`}
                     style={{ backgroundImage: `url(${img})`}}
                     data-aos="fade-up-right"
                   >
                     
                   </div>}
-                  {disc&&<p className={`flex items-center justify-center bg-gray-200 h-56 max-md:h-40 max-md:w-64 ${disc?'max-sm:h-36 max-sm:w-48':'max-sm:h-36 max-sm:w-56'} w-80 rounded-lg shadow-md bg-cover bg-center text-center`}>
+                  {disc&&<p className={`flex items-center justify-center bg-gray-200 h-56 w-full rounded-lg shadow-md bg-cover bg-center text-center`}>
                       {disc}
                       </p>}
                   <div
-                    className={`h-56 max-md:h-40 max-md:w-64 ${disc?'max-sm:h-36 max-sm:w-48':'max-sm:h-36 max-sm:w-56'} w-80 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5`}
+                    className={` w-full bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5`}
                     data-aos="fade-up-left"
                   >
                     <h4 className="font-medium text-start" style={{direction:"rtl"}}>{title}</h4>

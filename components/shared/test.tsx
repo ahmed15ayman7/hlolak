@@ -132,11 +132,11 @@ const Test = ({
         </div>
         {testimonials2.length===0?<Loader is/>: <>
         {showMore ? (
-          <div className="flex justify-center gap-[3%] max-sm:gap-[1%] flex-wrap">
+           <div className="flex justify-center gap-[5%] max-sm:gap-[1%] max-md:gap-[3%] flex-wrap">
             {testimonials2.map((item: any) => (
               <div
                 key={item.text}
-                className="w-1/5 max-md:w-[40%] max-sm:w-[47%] max-lg:w-1/4">
+                className="w-[23%] max-md:w-[40%] max-sm:w-[47%] max-lg:w-1/4">
                 <CardPost
                   disc={item.text}
                   title={item.author}
@@ -163,7 +163,7 @@ const Test = ({
           customLeftArrow={<CustomLeftArrow />}
             customRightArrow={<CustomRightArrow />}>
             {testimonials2.map((item) => (
-              <div key={item?.text} className="p-4">
+              <div key={item?.text} className="p-4 max-md:p-2 max-sm:p-0">
                 <CardPost
                   disc={item.text}
                   title={item.author}

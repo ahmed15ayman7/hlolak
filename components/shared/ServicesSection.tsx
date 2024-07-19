@@ -56,7 +56,7 @@ const ServicesSection: React.FC = () => {
               <div className={`flex bg-gray-200 h-32 w-32 rounded-full shadow-md bg-cover bg-center justify-center items-center transition-colors transition duration-300 hover:bg-[#ab994e] hover:text-white`} data-aos="fade-down">
                 {service.icon}
               </div>
-              <div className="w-64 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5" data-aos="fade-up">
+              <div className="w-64 max-sm:w-full bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5" data-aos="fade-up">
                 <div className="header-content inline-flex">
                   <div className={`category-badge flex-1 h-4 w-4 m rounded-full m-1 ${service.badgeColor}`}>
                     <div className="h-2 w-2 rounded-full m-1 bg-[#ab994e]"></div>

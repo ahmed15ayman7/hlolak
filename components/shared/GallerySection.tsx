@@ -155,7 +155,7 @@ const PhotoGallery = ({
           customLeftArrow={<CustomLeftArrow />}
             customRightArrow={<CustomRightArrow />}>
             {galleryItems2.map((item: any) => (
-              <div key={item.id} className="p-4">
+              <div key={item.id} className="p-4 max-md:p-2 max-sm:p-0">
                 <CardPost
                   title={item.title}
                   img={item.imageUrl}

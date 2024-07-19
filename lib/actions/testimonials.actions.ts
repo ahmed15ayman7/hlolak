@@ -1,9 +1,18 @@
 "use server";
 import { connectDB } from "@/mongoose";
-import Testimonial from '../models/testimonials.models';
+import Testimonial from "../models/testimonials.models";
+import { revalidatePath } from "next/cache";
 
 // Function to add a testimonial
-export const addTestimonial = async ({ text, author }:{text:string, author:string}) => {
+export const addTestimonial = async ({
+  text,
+  author,
+  path,
+}: {
+  text: string;
+  author: string;
+  path: string;
+}) => {
   try {
     await connectDB();
     const newTestimonial = new Testimonial({
@@ -11,22 +20,23 @@ export const addTestimonial = async ({ text, author }:{text:string, author:strin
       author,
     });
     await newTestimonial.save();
-    return newTestimonial;
+    revalidatePath(path);
+    // return newTestimonial;
   } catch (err) {
     console.error(err);
-    console.error('Failed to create testimonial!');
+    console.error("Failed to create testimonial!");
   }
 };
 
 // Function to delete a testimonial by ID
-export const deleteTestimonial = async (id:string) => {
+export const deleteTestimonial = async (id: string) => {
   try {
     await connectDB();
     const result = await Testimonial.findByIdAndDelete(id);
     return result;
   } catch (err) {
     console.error(err);
-    console.error('Failed to delete testimonial!');
+    console.error("Failed to delete testimonial!");
   }
 };
 
@@ -38,6 +48,6 @@ export const getAllTestimonials = async () => {
     return testimonials;
   } catch (err) {
     console.error(err);
-    console.error('Failed to fetch testimonials!');
+    console.error("Failed to fetch testimonials!");
   }
 };

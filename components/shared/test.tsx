@@ -1,20 +1,20 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Testimonial from "./Testimonial";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CardPost from "../cards/cardPost";
 import { getAllTestimonials } from "@/lib/actions/testimonials.actions";
-import { usePathname } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import { Button } from "../ui/button";
+import Loader from "./Loader";
+import { format } from "date-fns";
 interface Testimonial {
   _id: string;
   text: string;
   author: string;
   date: string;
 }
-
 
 const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => {
   return (
@@ -32,9 +32,20 @@ const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => {
   );
 };
 
-const Test: React.FC = () => {
-  let path = usePathname();
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+const Test = ({
+  reload,
+  isPage,
+  setAdd,
+  add,
+}: {
+  reload?: number;
+  isPage?: boolean;
+  setAdd?: any;
+  add?: boolean;
+}) => {
+  const navigation = useRouter();
+  const [showMore, setShowMore] = useState(false);
+  const [testimonials2, setTestimonials] = useState<Testimonial[]>([]);
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -42,25 +53,46 @@ const Test: React.FC = () => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: testimonials2.length< 4 && testimonials2.length >1?testimonials2.length-1:testimonials2.length ==1?1:4,
+      items:
+        testimonials2.length < 4 && testimonials2.length > 1
+          ? testimonials2.length - 1
+          : testimonials2.length == 1
+          ? 1
+          : 4,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: testimonials2.length< 3 && testimonials2.length >1?testimonials2.length-1:testimonials2.length ==1?1:3,
+      breakpoint: { max: 1024, min: 564 },
+      items:
+        testimonials2.length < 3 && testimonials2.length > 1
+          ? testimonials2.length - 1
+          : testimonials2.length == 1
+          ? 1
+          : 3,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: testimonials2.length< 4 && testimonials2.length >1?testimonials2.length-1:testimonials2.length ==1?1:2,
+      breakpoint: { max: 564, min: 0 },
+      items:
+        testimonials2.length < 2 && testimonials2.length > 1
+          ? testimonials2.length - 1
+          : testimonials2.length == 1
+          ? 1
+          : 2,
     },
   };
 
   useEffect(() => {
-    const getItems = async () => {
-      const items = await getAllTestimonials();
+   
+    const fetchGalleryItems = async () => {
+      try {
+        const items = await getAllTestimonials();
       setTestimonials(items!);
+      } catch (err) {
+        console.error("Failed to fetch gallery items:", err);
+      }
     };
-    getItems();
-  }, []);
+
+    fetchGalleryItems();
+  }, [reload]);
 
   return (
     <div className="blog text-gray-700 body-font flex items-center justify-center">
@@ -69,34 +101,80 @@ const Test: React.FC = () => {
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
             أراء من عملائنا
           </h1>
+          <div className="flex">
+            <Button
+              variant={"link"}
+              onClick={() => {
+                if (isPage) {
+                  setAdd(!add);
+                } else {
+                  navigation.push("/opinion");
+                }
+              }}>
+              <h3 className="text-sm font-medium title-font text-gray-900 underline">
+                {add ? "الغاء الاضافه" : " ضف رايك  "}
+              </h3>
+            </Button>
+            <Button
+              variant={"link"}
+              onClick={() => {
+                if (isPage) {
+                  setShowMore(!showMore);
+                } else {
+                  navigation.push("/opinion");
+                }
+              }}>
+              <h3 className="text-sm font-medium title-font text-gray-900 underline">
+                عرض {showMore ? "أقل" : "المزيد"}
+              </h3>
+            </Button>
+          </div>
         </div>
-        <Carousel
+        {testimonials2.length===0?<Loader is/>: <>
+        {showMore ? (
+          <div className="flex justify-center gap-[3%] max-sm:gap-[1%] flex-wrap">
+            {testimonials2.map((item: any) => (
+              <div
+                key={item.text}
+                className="w-1/5 max-md:w-[40%] max-sm:w-[47%] max-lg:w-1/4">
+                <CardPost
+                  disc={item.text}
+                  title={item.author}
+                  time={format(item.date, "d/M/yyyy")}
+                  link={isPage ? `/opinion?id=${item._id}` : "/opinion"}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Carousel
           responsive={responsive}
           ssr
           infinite
           autoPlay
           autoPlaySpeed={3000}
           keyBoardControl
-          customTransition="all .5"
+          customTransition="all .5 ease-in-out"
           transitionDuration={500}
           containerClass="carousel-container"
-          removeArrowOnDeviceType={["tablet", "mobile"]}
+          // removeArrowOnDeviceType={["tablet", "mobile"]}
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item-padding-40-px"
           customLeftArrow={<CustomLeftArrow />}
-          customRightArrow={<CustomRightArrow />}
-        >
-          {testimonials2.map((item) => (
-            <div key={item?.text} className="p-4">
-              <CardPost
-                disc={item.text}
-                title={item.author}
-                time={item.date}
-                link={"/opinion"}
-              />
-            </div>
-          ))}
-        </Carousel>
+            customRightArrow={<CustomRightArrow />}>
+            {testimonials2.map((item) => (
+              <div key={item?.text} className="p-4">
+                <CardPost
+                  disc={item.text}
+                  title={item.author}
+                  time={format(item.date, "d/M/yyyy")}
+                  link={isPage ? `/opinion?id=${item._id}` : "/opinion"}
+                />
+              </div>
+            ))}
+          </Carousel>
+        )}
+        </>}
       </div>
     </div>
   );

@@ -1,14 +1,14 @@
 "use client";
-import { getAllGalleryItems } from "@/lib/actions/Gallery.actions";
-import { IGalleryItem } from "@/lib/models/galleryItem.models";
-import Link from "next/link";
+import { getAllGalleryItems, GalleryItem } from "@/lib/actions/Gallery.actions";
 import React, { useEffect, useState } from "react";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import CardPost from "../cards/cardPost";
-
-
+import { format } from "date-fns";
+import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
+import Loader from "./Loader";
 
 const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => {
   return (
@@ -26,8 +26,20 @@ const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => {
   );
 };
 
-const PhotoGallery: React.FC = () => {
-  const [galleryItems, setGalleryItems] = useState<IGalleryItem[]>([]);
+const PhotoGallery = ({
+  reload,
+  isPage,
+  setAdd,
+  add,
+}: {
+  reload?: number;
+  isPage?: boolean;
+  setAdd?: any;
+  add?: boolean;
+}) => {
+  const navigation = useRouter();
+  const [showMore, setShowMore] = useState(false);
+  const [galleryItems2, setGalleryItems] = useState<GalleryItem[]>([]);
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -35,15 +47,30 @@ const PhotoGallery: React.FC = () => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: galleryItems2.length< 4 && galleryItems2.length >1?galleryItems2.length-1:galleryItems2.length ==1?1:4,
+      items:
+        galleryItems2.length < 4 && galleryItems2.length > 1
+          ? galleryItems2.length - 1
+          : galleryItems2.length == 1
+          ? 1
+          : 4,
     },
     tablet: {
       breakpoint: { max: 1024, min: 564 },
-      items: galleryItems2.length< 3 && galleryItems2.length >1?galleryItems2.length-1:galleryItems2.length ==1?1:3,
+      items:
+        galleryItems2.length < 3 && galleryItems2.length > 1
+          ? galleryItems2.length - 1
+          : galleryItems2.length == 1
+          ? 1
+          : 3,
     },
     mobile: {
       breakpoint: { max: 564, min: 0 },
-      items: galleryItems2.length< 2 && galleryItems2.length >1?galleryItems2.length-1:galleryItems2.length ==1?1:2,
+      items:
+        galleryItems2.length < 2 && galleryItems2.length > 1
+          ? galleryItems2.length - 1
+          : galleryItems2.length == 1
+          ? 1
+          : 2,
     },
   };
   useEffect(() => {
@@ -57,7 +84,7 @@ const PhotoGallery: React.FC = () => {
     };
 
     fetchGalleryItems();
-  }, []);
+  }, [reload]);
 
   return (
     <section className="blog text-gray-700 body-font flex items-center justify-center">
@@ -66,13 +93,53 @@ const PhotoGallery: React.FC = () => {
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-700">
             معرض الصور
           </h1>
-          <Link href="/galleries">
-            <h1 className="text-sm font-medium title-font text-gray-900 underline">
-              عرض المزيد
-            </h1>
-          </Link>
+          <div className="flex">
+            <Button
+              variant={"link"}
+              onClick={() => {
+                if (isPage) {
+                  setAdd(!add);
+                } else {
+                  navigation.push("/galleries");
+                }
+              }}>
+              <h3 className="text-sm font-medium title-font text-gray-900 underline">
+                {add ? "الغاء الاضافه" : " اضافة صوره "}
+              </h3>
+            </Button>
+            <Button
+              variant={"link"}
+              onClick={() => {
+                if (isPage) {
+                  setShowMore(!showMore);
+                } else {
+                  navigation.push("/galleries");
+                }
+              }}>
+              <h3 className="text-sm font-medium title-font text-gray-900 underline">
+                عرض {showMore ? "أقل" : "المزيد"}
+              </h3>
+            </Button>
+          </div>
         </div>
-        <Carousel
+      {galleryItems2.length===0?<Loader is/>: <>
+        {showMore ? (
+          <div className="flex justify-center gap-[3%] max-sm:gap-[1%] flex-wrap">
+            {galleryItems2.map((item: any) => (
+              <div
+              key={item.id}
+              className="w-1/5 max-md:w-[40%] max-sm:w-[47%] max-lg:w-1/4">
+                <CardPost
+                  title={item.title}
+                  img={item.imageUrl}
+                  time={format(item.date, "d/M/yyyy")}
+                  link={`/gallery/${item.id}`}
+                  />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Carousel
           responsive={responsive}
           ssr
           infinite
@@ -86,19 +153,20 @@ const PhotoGallery: React.FC = () => {
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item-padding-40-px"
           customLeftArrow={<CustomLeftArrow />}
-          customRightArrow={<CustomRightArrow />}
-        >
-          {galleryItems2.map((item: any) => (
-            <div key={item.id} className="p-4">
-              <CardPost
-                title={item.title}
-                img={item.imageUrl}
-                time={item.date}
-                link={`/gallery/${item.id}`}
-              />
-            </div>
-          ))}
-        </Carousel>
+            customRightArrow={<CustomRightArrow />}>
+            {galleryItems2.map((item: any) => (
+              <div key={item.id} className="p-4">
+                <CardPost
+                  title={item.title}
+                  img={item.imageUrl}
+                  time={format(item.date, "d/M/yyyy")}
+                  link={`/gallery/${item.id}`}
+                  />
+              </div>
+            ))}
+          </Carousel>
+        )}
+        </>}
       </div>
     </section>
   );

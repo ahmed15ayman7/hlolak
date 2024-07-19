@@ -21,6 +21,7 @@
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
     "get-orientation": "^1.1.2",
     "lucide-react": "^0.400.0",
     "mongoose": "^8.5.0",

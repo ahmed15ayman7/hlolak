@@ -1,5 +1,5 @@
+"use client"
 import type { NextPage } from "next";
-
 import HeroSection from "./HeroSection";
 import PhotoGallery from "./GallerySection";
 import ServicesSection from "./ServicesSection";
@@ -11,9 +11,9 @@ const Home: NextPage = () => {
     <>
      
       <HeroSection />
-      <PhotoGallery />
       <ServicesSection />
       <LoanApplication />
+      <PhotoGallery />
       <Test />
     </>
   );

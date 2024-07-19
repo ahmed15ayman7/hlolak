@@ -1,13 +1,9 @@
-import type { NextPage } from "next";
+
 
 import Home from "../../components/shared/Home";
-
-
-const Page: NextPage = () => {
-
+const Page = () => {
   return (
     <>
-     
       <Home/>
     </>
   );

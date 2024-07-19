@@ -27,7 +27,7 @@ const FaqSection: React.FC = () => {
                 type="submit"
                 name="commit"
                 value="بحث"
-                className="bg-gray-600 p-2 hover:bg-blue-400 cursor-pointer mx-2 rounded-full text-white"
+                className="bg-gray-600 p-2 hover:bg-[#ab994e] cursor-pointer mx-2 rounded-full text-white"
                 data-disable-with="بحث"
               />
             </div>

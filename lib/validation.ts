@@ -15,16 +15,9 @@ const serviceValidation = z.object({
     .string()
     .nonempty("جهة العمل مطلوبة"),
   salary: z
-    .number()
-    .min(1, "الراتب مطلوب")
-    .positive("الراتب يجب أن يكون قيمة موجبة"),
-  salary_bank: z
     .string()
-    .nonempty("بنك إيداع الراتب مطلوب"),
-  age: z
-    .number()
-    .min(18, "العمر يجب أن يكون 18 سنة على الأقل")
-    .max(70, "العمر يجب أن يكون 70 سنة على الأكثر"),
+    .min(1, "الراتب مطلوب"),
+
   provided_service_type: z
     .string()
     .nonempty("نوع الخدمة المقدمة مطلوب"),

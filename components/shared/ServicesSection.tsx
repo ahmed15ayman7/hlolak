@@ -1,4 +1,27 @@
+"use client"
 import React from 'react';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import { ChevronLeft,ChevronRight} from "lucide-react";
+
+const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 2
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 2
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 2
+  }
+};
 
 const ServicesSection: React.FC = () => {
   return (
@@ -10,16 +33,33 @@ const ServicesSection: React.FC = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing.
           </p>
         </div>
-        <div className="flex flex-wrap sm:-m-4 -mb-10 -mt-4">
+        <Carousel 
+          responsive={responsive}
+          ssr // means to render carousel on server-side
+          infinite
+          autoPlay
+          autoPlaySpeed={3000}
+          keyBoardControl
+          customTransition="all .5"
+          transitionDuration={500}
+          containerClass="carousel-container"
+          // removeArrowOnDeviceType={["tablet", "mobile"]}
+          deviceType={"desktop"}
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-40-px"
+          customLeftArrow={<CustomLeftArrow />}
+          customRightArrow={<CustomRightArrow />}
+
+        >
           {services.map((service, index) => (
             <div key={index} className="p-4 md:w-1/4 md:mb-0 mb-6 flex flex-col justify-center items-center max-w-sm mx-auto">
-              <div className={`flex bg-gray-300 h-32 w-32 rounded-full shadow-md bg-cover bg-center justify-center items-center transition-colors transition duration-300 hover:bg-blue-500 hover:text-white`} data-aos="fade-down">
+              <div className={`flex bg-gray-200 h-32 w-32 rounded-full shadow-md bg-cover bg-center justify-center items-center transition-colors transition duration-300 hover:bg-[#ab994e] hover:text-white`} data-aos="fade-down">
                 {service.icon}
               </div>
               <div className="w-64 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5" data-aos="fade-up">
-                <div className="header-content inline-flex ">
+                <div className="header-content inline-flex">
                   <div className={`category-badge flex-1 h-4 w-4 m rounded-full m-1 ${service.badgeColor}`}>
-                    <div className="h-2 w-2 rounded-full m-1 bg-blue-500"></div>
+                    <div className="h-2 w-2 rounded-full m-1 bg-[#ab994e]"></div>
                   </div>
                   <div className="category-title flex-1 text-sm">{service.category}</div>
                 </div>
@@ -27,9 +67,27 @@ const ServicesSection: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
+        </Carousel>
       </div>
     </section>
+  );
+};
+
+
+const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => {
+  return (
+    <button className="custom-arrow custom-left" onClick={onClick}>
+      <ChevronLeft color="#ffffff" />
+    </button>
+  );
+};
+
+const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => {
+  return (
+    <button className="custom-arrow custom-right" onClick={onClick}>
+<ChevronRight color="#ffffff" />
+      
+    </button>
   );
 };
 

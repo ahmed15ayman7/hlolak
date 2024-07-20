@@ -26,23 +26,23 @@ import { Label } from "../ui/label";
 import { serviceValidation } from "@/lib/validation";
 import { SelectGroup } from "@radix-ui/react-select";
 import { Button } from "../ui/button";
-import { addService } from '@/lib/actions/service.actions';
+import { addService } from "@/lib/actions/service.actions";
 
-const ServiceForm = () => {
+const ServiceForm = ({ NameService }: { NameService?: string }) => {
   let form = useForm<z.infer<typeof serviceValidation>>({
     resolver: zodResolver(serviceValidation),
     defaultValues: {
       mobile: "",
-      name:  "",
-      salary:'',
+      name: "",
+      salary: "",
       employer: "",
-      provided_service_type: "",
-      has_debts:"",
+      provided_service_type: NameService || "",
+      has_debts: "",
     },
   });
   async function onsubmit(data: z.infer<typeof serviceValidation>) {
     try {
-      const newService = await addService({
+      await addService({
         name: data.name,
         mobile: data.mobile,
         employer: data.employer,
@@ -125,7 +125,6 @@ const ServiceForm = () => {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>جهة العمل</SelectLabel>
-
                     <SelectItem value="private_sector">قطاع خاص</SelectItem>
                     <SelectItem value="retired">متقاعد</SelectItem>
                     <SelectItem value="civilian">مدني</SelectItem>

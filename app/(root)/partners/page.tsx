@@ -1,14 +1,15 @@
-import React, { Suspense } from 'react'
-import Service from './Service'
+"use client"
+import { Suspense } from 'react'
 function SearchBarFallback() {
   return <></>
 }
 const Page = () => {
+
   return (
     <Suspense fallback={<SearchBarFallback />} >
-      <Service/>
+      <h1>jhfhfj</h1>
     </Suspense>
   )
 }
-
 export default Page
+export const dynamic = 'force-dynamic'

@@ -1,8 +1,11 @@
 "use client"
 import React from 'react';
+import Link from 'next/link';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { ChevronLeft,ChevronRight} from "lucide-react";
+import { Button} from "@/components/ui/button";
+import { usePathname } from 'next/navigation';
 
 const responsive = {
   superLargeDesktop: {
@@ -24,6 +27,7 @@ const responsive = {
 };
 
 const ServicesSection: React.FC = () => {
+  let path=usePathname()
   return (
     <section className="blog text-gray-700 body-font flex items-center justify-center">
       <div className="container px-5 py-24 mx-auto">
@@ -53,7 +57,7 @@ const ServicesSection: React.FC = () => {
         >
           {services.map((service, index) => (
             <div key={index} className="p-4 md:w-1/4 md:mb-0 mb-6 flex flex-col justify-center items-center max-w-sm mx-auto">
-              <div className={`flex bg-gray-200 h-32 w-32 rounded-full shadow-md bg-cover bg-center justify-center items-center transition-colors transition duration-300 hover:bg-[#ab994e] hover:text-white`} data-aos="fade-down">
+              <div className={`flex bg-gray-200 h-32 w-32 rounded-full shadow-md bg-cover bg-center justify-center items-center transition-colors  duration-300 hover:bg-[#ab994e] hover:text-white`} data-aos="fade-down">
                 {service.icon}
               </div>
               <div className="w-64 max-sm:w-full bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5" data-aos="fade-up">
@@ -68,6 +72,18 @@ const ServicesSection: React.FC = () => {
             </div>
           ))}
         </Carousel>
+        {
+          path!=="/services"&&
+          <div className="text-center w-full">
+
+        <Link href={"/services"} className="w-64" >
+        <Button type="submit" className="btn-blue my-5 w-64">
+        خدماتنا
+        </Button>
+
+        </Link>
+        </div>
+        }
       </div>
     </section>
   );

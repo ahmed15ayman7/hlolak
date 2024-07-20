@@ -31,6 +31,7 @@ const NavBar: React.FC = () => {
             <NavItem href="/about_us" text="نبذة عنا" />
             <NavItem href="/blog_posts" text="المدونة" />
             <NavItem href="/galleries" text="معرض الصور" />
+            <NavItem href="/partners" text="شركائنا"  />
             <NavItem href="/offers" text="العروض العقارية" />
             <NavItem href="/faqs" text="الأسئلة الشائعة" />
           </div>
@@ -85,6 +86,7 @@ const NavBar: React.FC = () => {
             <NavItem href="/about_us" text="نبذة عنا" mobile />
             <NavItem href="/blog_posts" text="المدونة" mobile />
             <NavItem href="/galleries" text="معرض الصور" mobile />
+            <NavItem href="/partners" text="شركائنا" mobile />
             <NavItem href="/offers" text="العروض العقارية" mobile />
             <NavItem href="/faqs" text="الأسئلة الشائعة" mobile />
           </div>
@@ -106,7 +108,7 @@ type NavItemProps = {
 
     return(
 <Link href={href}>
-    <p className={` flex items-center border-b-4  px-4 py-4 justify-center transition-colors  ${check||(href==='/'&&pathname==='/')?' border-[#ab994e]':'border-transparent'} ${mobile ? ' text-black hover:bg-[#ab994e] hover:text-white p-2 rounded-lg' : 'h-full'}`}>
+    <p className={` flex items-center font-bold border-b-4  px-4 py-4 justify-center transition-colors  ${check||(href==='/'&&pathname==='/')?' border-[#ab994e]':'border-transparent'} ${mobile ? ' text-black hover:bg-[#ab994e] hover:text-white p-2 rounded-lg' : 'h-full'}`}>
       {text}
     </p>
   </Link>

@@ -1,6 +1,6 @@
 "use client";
 import ServiceForm from "../forms/ServiceForm"
-const LoanApplication = () => {
+const LoanApplication = ({NameService}:{NameService?:string}) => {
 
 
   return (
@@ -15,7 +15,7 @@ const LoanApplication = () => {
           className="flex flex-nowrap sm:-m-4 -mx-4 -mb-10 -mt-4 justify-center items-center"
           data-aos="fade-down">
           <div className="w-full mx-auto sm:py-6 sm:w-4/5 md:w-4/5 lg:w-11/12 xl:max-w-2xl mb-6">
-            <ServiceForm/>
+            <ServiceForm NameService={NameService}/>
           </div>
         </div>
       </div>

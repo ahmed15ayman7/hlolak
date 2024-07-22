@@ -9,6 +9,7 @@ import { format } from "date-fns";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import Loader from "./Loader";
+import { SkeletonCard } from "../cards/CardLoad";
 
 const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => {
   return (
@@ -122,7 +123,17 @@ const PhotoGallery = ({
             </Button>
           </div>
         </div>
-      {galleryItems2.length===0?<Loader is/>: <>
+      {galleryItems2.length===0?(
+          <div className="flex justify-center gap-[5%] max-sm:gap-[1%] max-md:gap-[3%] flex-wrap">
+            {[1,2,3].map((e) => (
+              <div
+                key={e}
+                className="w-[23%] max-md:w-[40%] max-sm:w-[47%] max-lg:w-1/4">
+                <SkeletonCard />
+              </div>
+            ))}
+          </div>
+        ): <>
         {showMore ? (
           <div className="flex justify-center gap-[2%] max-sm:gap-[1%] max-md:gap-[3%] flex-wrap">
             {galleryItems2.map((item: any) => (
@@ -133,7 +144,7 @@ const PhotoGallery = ({
                   title={item.title}
                   img={item.imageUrl}
                   time={format(item.date, "d/M/yyyy")}
-                  link={`/gallery/${item.id}`}
+                  link={`/gallery?id=${item._id}`}
                   />
               </div>
             ))}

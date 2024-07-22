@@ -1,15 +1,12 @@
-"use client"
-import { Suspense } from 'react'
-function SearchBarFallback() {
-  return <></>
-}
-const Page = () => {
+"use client";
+import {PartnersSection} from "../../../components/shared/partnersSection";
 
+const Page = () => {
   return (
-    <Suspense fallback={<SearchBarFallback />} >
-      <h1>jhfhfj</h1>
-    </Suspense>
+    <div>
+
+      <PartnersSection />
+    </div>
   )
-}
-export default Page
-export const dynamic = 'force-dynamic'
+};
+export default Page;

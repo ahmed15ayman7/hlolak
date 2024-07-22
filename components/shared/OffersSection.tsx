@@ -1,21 +1,21 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import CardPost from "../cards/cardPost";
-import { BlogItem, getAllBlogs } from "@/lib/actions/Blog.actions";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
 import { SkeletonCard } from "../cards/CardLoad";
 import { Button } from "../ui/button";
+import { OffersItem, getAllOfferss } from "@/lib/actions/Offers.actions";
 
-const LatestPostsSection = ({isPage}:{isPage?:boolean}) => {
+const OffersSection = ({isPage}:{isPage?:boolean}) => {
   const navigation = useRouter();
   const [showMore, setShowMore] = useState(false);
-  const [Blogs, setBlogs] = useState<BlogItem[]>([]);
+  const [Offers, setOffers] = useState<OffersItem[]>([]);
   useEffect(() => {
     const fetchGalleryItems = async () => {
       try {
-        const items = await getAllBlogs();
-        setBlogs(items!);
+        const items = await getAllOfferss();
+        setOffers(items!);
       } catch (err) {
         console.error("Failed to fetch gallery items:", err);
       }
@@ -23,7 +23,7 @@ const LatestPostsSection = ({isPage}:{isPage?:boolean}) => {
 
     fetchGalleryItems();
   }, []);
-  let blog_posts = [
+  let Offers2 = [
     {
       title: "نصيحة عقارية",
       imageUrl:
@@ -51,8 +51,7 @@ const LatestPostsSection = ({isPage}:{isPage?:boolean}) => {
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
-            اخر التدوينات
-          </h1>
+          العروض العقارية          </h1>
           <Button
               variant={"link"}
               onClick={() => {
@@ -68,7 +67,7 @@ const LatestPostsSection = ({isPage}:{isPage?:boolean}) => {
             </Button>
         </div>
 
-            {blog_posts.length === 0 ? (
+            {Offers2.length === 0 ? (
               <div className="flex justify-center gap-[5%] max-sm:gap-[1%] max-md:gap-[3%] flex-wrap">
                 {[1, 2, 3].map((e) => (
                   <div
@@ -80,7 +79,7 @@ const LatestPostsSection = ({isPage}:{isPage?:boolean}) => {
               </div>
             ) : (
               <div className="flex justify-center gap-[2%] max-sm:gap-[1%] max-md:gap-[3%] flex-wrap">
-                {blog_posts.map((item: any) => (
+                {Offers2.map((item: any) => (
                   <div
                     key={item}
                     className="w-[23%] max-md:w-[40%] max-sm:w-[47%] max-lg:w-1/4">
@@ -100,4 +99,4 @@ const LatestPostsSection = ({isPage}:{isPage?:boolean}) => {
   );
 };
 
-export default LatestPostsSection;
+export default OffersSection;

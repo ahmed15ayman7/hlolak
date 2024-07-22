@@ -4,11 +4,12 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CardPost from "../cards/cardPost";
 import { getAllTestimonials } from "@/lib/actions/testimonials.actions";
-import {  useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
 import Loader from "./Loader";
 import { format } from "date-fns";
+import { SkeletonCard } from "../cards/CardLoad";
 interface Testimonial {
   _id: string;
   text: string;
@@ -81,11 +82,10 @@ const Test = ({
   };
 
   useEffect(() => {
-   
     const fetchGalleryItems = async () => {
       try {
         const items = await getAllTestimonials();
-      setTestimonials(items!);
+        setTestimonials(items!);
       } catch (err) {
         console.error("Failed to fetch gallery items:", err);
       }
@@ -93,7 +93,7 @@ const Test = ({
 
     fetchGalleryItems();
   }, [reload]);
-
+  let hoverCards = [1, 2, 3];
   return (
     <div className="blog text-gray-700 body-font flex items-center justify-center">
       <div className="container px-5 py-24 mx-auto">
@@ -130,51 +130,63 @@ const Test = ({
             </Button>
           </div>
         </div>
-        {testimonials2.length===0?<Loader is/>: <>
-        {showMore ? (
-           <div className="flex justify-center gap-[5%] max-sm:gap-[1%] max-md:gap-[3%] flex-wrap">
-            {testimonials2.map((item: any) => (
+        {testimonials2.length === 0 ? (
+          <div className="flex justify-center gap-[5%] max-sm:gap-[1%] max-md:gap-[3%] flex-wrap">
+            {hoverCards.map((e) => (
               <div
-                key={item.text}
+                key={e}
                 className="w-[23%] max-md:w-[40%] max-sm:w-[47%] max-lg:w-1/4">
-                <CardPost
-                  disc={item.text}
-                  title={item.author}
-                  time={format(item.date, "d/M/yyyy")}
-                  link={isPage ? `/opinion?id=${item._id}` : "/opinion"}
-                />
+                <SkeletonCard />
               </div>
             ))}
           </div>
         ) : (
-          <Carousel
-          responsive={responsive}
-          ssr
-          infinite
-          autoPlay
-          autoPlaySpeed={3000}
-          keyBoardControl
-          customTransition="all .5 ease-in-out"
-          transitionDuration={500}
-          containerClass="carousel-container"
-          // removeArrowOnDeviceType={["tablet", "mobile"]}
-          dotListClass="custom-dot-list-style"
-          itemClass="carousel-item-padding-40-px"
-          customLeftArrow={<CustomLeftArrow />}
-            customRightArrow={<CustomRightArrow />}>
-            {testimonials2.map((item) => (
-              <div key={item?.text} className="p-4 max-md:p-2 max-sm:p-0">
-                <CardPost
-                  disc={item.text}
-                  title={item.author}
-                  time={format(item.date, "d/M/yyyy")}
-                  link={isPage ? `/opinion?id=${item._id}` : "/opinion"}
-                />
+          <>
+            {showMore ? (
+              <div className="flex justify-center gap-[5%] max-sm:gap-[1%] max-md:gap-[3%] flex-wrap">
+                {testimonials2.map((item: any) => (
+                  <div
+                    key={item.text}
+                    className="w-[23%] max-md:w-[40%] max-sm:w-[47%] max-lg:w-1/4">
+                    <CardPost
+                      disc={item.text}
+                      title={item.author}
+                      time={format(item.date, "d/M/yyyy")}
+                      link={isPage ? `/opinion?id=${item._id}` : "/opinion"}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
-          </Carousel>
+            ) : (
+              <Carousel
+                responsive={responsive}
+                ssr
+                infinite
+                autoPlay
+                autoPlaySpeed={3000}
+                keyBoardControl
+                customTransition="all .5 ease-in-out"
+                transitionDuration={500}
+                containerClass="carousel-container"
+                // removeArrowOnDeviceType={["tablet", "mobile"]}
+                dotListClass="custom-dot-list-style"
+                itemClass="carousel-item-padding-40-px"
+                customLeftArrow={<CustomLeftArrow />}
+                customRightArrow={<CustomRightArrow />}>
+                {testimonials2.map((item) => (
+                  <div key={item?.text} className="p-4 max-md:p-2 max-sm:p-0">
+                    <CardPost
+                      disc={item.text}
+                      title={item.author}
+                      time={format(item.date, "d/M/yyyy")}
+                      link={isPage ? `/opinion?id=${item._id}` : "/opinion"}
+                    />
+                  </div>
+                ))}
+              </Carousel>
+            )}
+          </>
         )}
-        </>}
       </div>
     </div>
   );

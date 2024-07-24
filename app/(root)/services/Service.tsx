@@ -2,6 +2,7 @@
 import LoanApplication from "@/components/shared/LoanApplication";
 import Services from "@/components/shared/Services";
 import ServicesSection from "@/components/shared/ServicesSection";
+import { Button } from "@/components/ui/button";
 import { servicesArray } from "@/constant/services";
 import { useSearchParams } from "next/navigation";
 import React from "react";
@@ -14,6 +15,7 @@ const Service = () => {
   ) : (
     <div className=" flex flex-col items-center">
       {/* <ServicesSection /> */}
+
       {servicesArray.map((service) => (
         <Services
           key={service.img}

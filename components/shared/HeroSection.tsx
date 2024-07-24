@@ -19,7 +19,7 @@ const HeroSection: React.FC = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
             <div className="mt-8 flex flex-col space-y-3 sm:-mx-2 sm:flex-row sm:justify-center sm:space-y-0" data-aos="fade-up-right">
-              <Link href="/leads/new?referer=landing-page">
+              <Link href="/about_us">
                 <p className="btn-blue p-5">   lorem ipsum</p>
               </Link>
             </div>

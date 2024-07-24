@@ -27,8 +27,10 @@ import { serviceValidation } from "@/lib/validation";
 import { SelectGroup } from "@radix-ui/react-select";
 import { Button } from "../ui/button";
 import { addService } from "@/lib/actions/service.actions";
+import { useRouter } from "next/navigation";
 
 const ServiceForm = ({ NameService }: { NameService?: string }) => {
+  let navigation= useRouter()
   let form = useForm<z.infer<typeof serviceValidation>>({
     resolver: zodResolver(serviceValidation),
     defaultValues: {
@@ -51,6 +53,8 @@ const ServiceForm = ({ NameService }: { NameService?: string }) => {
         has_debts: data.has_debts,
       });
       console.log("Service created successfully");
+      form.reset();
+      navigation.replace("/services")
     } catch (error) {
       console.log("Failed to create service:", error);
     }

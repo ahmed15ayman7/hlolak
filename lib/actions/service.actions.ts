@@ -18,6 +18,7 @@ interface AssignEmployeeParams {
   employeeId: string;
 }
 
+
 export const addService = async ({
   name,
   mobile,
@@ -44,7 +45,7 @@ export const addService = async ({
       link: `/dashboard/services/${newService._id}`,
     };
     pusherServer.trigger("AdminChannel", "admin", message);
-    return newService;
+    console.log("Success to create service!");
   } catch (err) {
     console.error(err);
     console.error("Failed to create service!");

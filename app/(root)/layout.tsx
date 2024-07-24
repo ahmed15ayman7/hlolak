@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import NavBar from "../../components/shared/header";
 import Footer from "@/components/shared/footer";
+import ChatIcon from "@/components/cards/ChatBotIcon";
 // import ProviderRedux from "@/lib/redux/ProviderRedux";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,6 +24,7 @@ export default function RootLayout({
           <NavBar />
           {children}
           <Footer />
+          <ChatIcon/>
         </body>
       {/* </ProviderRedux> */}
     </html>

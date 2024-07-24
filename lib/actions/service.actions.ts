@@ -1,9 +1,8 @@
 "use server";
-import { connectDB } from '@/mongoose';
-import Service from '../models/service.models';
-import { FilterQuery, SortOrder } from 'mongoose';
-
-
+import { connectDB } from "@/mongoose";
+import Service from "../models/service.models";
+import { FilterQuery, SortOrder } from "mongoose";
+import { pusherServer } from "../pusher";
 
 interface AddServiceParams {
   name: string;
@@ -19,7 +18,14 @@ interface AssignEmployeeParams {
   employeeId: string;
 }
 
-export const addService = async ({ name, mobile, employer, salary, provided_service_type, has_debts }: AddServiceParams) => {
+export const addService = async ({
+  name,
+  mobile,
+  employer,
+  salary,
+  provided_service_type,
+  has_debts,
+}: AddServiceParams) => {
   try {
     connectDB();
     const newService = new Service({
@@ -31,10 +37,17 @@ export const addService = async ({ name, mobile, employer, salary, provided_serv
       has_debts,
     });
     await newService.save();
+    let message = {
+      name: name,
+      content: ` New Service `,
+      image: "/noavatar.png",
+      link: `/dashboard/services/${newService._id}`,
+    };
+    pusherServer.trigger("AdminChannel", "admin", message);
     return newService;
   } catch (err) {
     console.error(err);
-    console.error('Failed to create service!');
+    console.error("Failed to create service!");
   }
 };
 export async function fetchAllServices({
@@ -42,7 +55,7 @@ export async function fetchAllServices({
   pageNum = 1,
   pageSize = 20,
   sortBy = "desc",
-  userId
+  userId,
 }: {
   searchString: string;
   userId: string;
@@ -54,7 +67,7 @@ export async function fetchAllServices({
     connectDB();
     let skipAmount = (pageNum - 1) * pageSize;
     let regex = new RegExp(searchString, "i");
-    let query: FilterQuery<typeof Service> = { _id: { $ne:userId  } };
+    let query: FilterQuery<typeof Service> = { _id: { $ne: userId } };
     if (searchString.trim() !== "") {
       query.$or = [
         { name: { $regex: regex } },
@@ -71,7 +84,7 @@ export async function fetchAllServices({
       .exec();
     const totalServices = await Service.countDocuments(query);
     let isNext = +totalServices > skipAmount + services.length;
-    return {count:totalServices, services, isNext};
+    return { count: totalServices, services, isNext };
   } catch (error: any) {
     console.log(`not found user: ${error.message}`);
   }
@@ -83,6 +96,6 @@ export const getAllServices = async () => {
     return services;
   } catch (err) {
     console.error(err);
-    console.error('Failed to fetch services!');
+    console.error("Failed to fetch services!");
   }
 };

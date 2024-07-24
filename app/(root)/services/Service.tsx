@@ -13,7 +13,7 @@ const Service = () => {
     <LoanApplication NameService={NameService} />
   ) : (
     <div className=" flex flex-col items-center">
-      <ServicesSection />
+      {/* <ServicesSection /> */}
       {servicesArray.map((service) => (
         <Services
           key={service.img}

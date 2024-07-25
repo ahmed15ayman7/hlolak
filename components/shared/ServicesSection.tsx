@@ -22,7 +22,6 @@ const ServicesSection: React.FC = () => {
         </div>
 <div className=" flex flex-wrap">
         {services.map((service, index) => (
-          
           <div
           key={index}
           className="p-4 w-1/4 max-lg:w-1/2 md:mb-0 mb-6 flex flex-col justify-center items-center max-w-sm mx-auto">

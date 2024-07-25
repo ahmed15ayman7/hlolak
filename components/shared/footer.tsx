@@ -1,7 +1,8 @@
 "use client"
 import Link from "next/link"
-import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
-
+import { Facebook, Linkedin,  } from "lucide-react";
+import { FaTiktok } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="bg-white border-t">
@@ -15,10 +16,9 @@ export default function Footer() {
             <li className="mb-2"><Link href="/blog_posts">المدونة</Link></li>
           </ul>
           <div className="flex space-x-4 mt-4 gap-[10px]">
-            <a href="#"><Facebook color="#0f8ded"  /></a>
-            <a href="#"><Linkedin color="#0d63bc" /></a>
-            <a href="#"><Youtube color="#f60001" /></a>
-            <a href="#"><Instagram color="#5153c7" /></a>
+            <a  href="https://www.facebook.com/uesr3?mibextid=LQQJ4d"><Facebook color="#0f8ded" size="25px" /></a>
+            <a href="https://api.whatsapp.com/send/?phone=966575352108&text&type=phone_number&app_absent=0"><FaWhatsapp color="#28cc64" size="25px" /></a>
+            <a href="https://www.tiktok.com/@halloulalamkanrealestate?_t=8nTc9lFJ8Pg&_r=1"><FaTiktok size="25px" /></a>
           </div>
         </div>
         <div className="w-1/6 max-md:w-1/3  max-sm:w-1/2">

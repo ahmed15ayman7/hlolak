@@ -16,9 +16,10 @@ const HeroSection: React.FC = () => {
               data-aos="fade-up-left">
               حلول الامكان العقاريه
             </h1>
-            {/* <p className="mt-6 lg:text-3xl text-white" data-aos="fade-up-left">
-              
-            </p> */}
+            <p className="mt-6 lg:text-3xl text-white" data-aos="fade-up-left">
+            نحن دليلك لتحقيق حلم المنزل المثالي
+دي تحتها
+            </p>
             <div
               className="mt-8 flex flex-col space-y-3 sm:-mx-2 sm:flex-row sm:justify-center sm:space-y-0"
               data-aos="fade-up-right">

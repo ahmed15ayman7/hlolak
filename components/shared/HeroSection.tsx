@@ -6,7 +6,7 @@ const HeroSection: React.FC = () => {
     <section
       className="h-screen bg-cover bg-fixed"
       style={{
-        backgroundImage: `url('https://holoolak.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9KIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a2f0cc688f5d5eda47445dbdf894c3801580dda3/WhatsApp%20Image%202024-05-23%20at%201.26.32%20PM.jpeg')`,
+        backgroundImage: `url('/assets/preview.jpg')`,
       }}>
       <div className="overlay-background-image">
         <div className="flex h-full w-full items-center justify-center container mx-auto px-8">
@@ -16,9 +16,9 @@ const HeroSection: React.FC = () => {
               data-aos="fade-up-left">
               حلول الامكان العقاريه
             </h1>
-            <p className="mt-6 lg:text-3xl text-white" data-aos="fade-up-left">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </p>
+            {/* <p className="mt-6 lg:text-3xl text-white" data-aos="fade-up-left">
+              
+            </p> */}
             <div
               className="mt-8 flex flex-col space-y-3 sm:-mx-2 sm:flex-row sm:justify-center sm:space-y-0"
               data-aos="fade-up-right">

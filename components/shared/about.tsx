@@ -6,7 +6,7 @@ const AboutPreview = () => {
     <div className="container px-5 py-24 mx-auto">
       <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
         <h1 className="sm:text-3xl text-4xl font-medium title-font mb-2 text-gray-700">نبذة عنا</h1>
-        <img className=" w-80 h-80 " src="https://holoolak.com/assets/holoolak_company_logo-fbf516f6af84aea561274ece952ac5827d50fe364275bb06c03631114aec8721.svg" />
+        <img className=" w-80 h-80 " src="/assets/logo.jpg" />
       </div>
       <div className="sm:-m-4 -mb-10 -mt-4">
         <div className="p-4 md:mb-0 mb-20 mt-40 flex flex-col justify-center items-center">

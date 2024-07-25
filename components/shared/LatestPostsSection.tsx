@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 const LatestPostsSection = ({isPage}:{isPage?:boolean}) => {
   const navigation = useRouter();
   const [showMore, setShowMore] = useState(false);
-  const [Blogs, setBlogs] = useState<BlogItem[]>([]);
+  const [blog_posts, setBlogs] = useState<BlogItem[]>([]);
   useEffect(() => {
     const fetchGalleryItems = async () => {
       try {
@@ -23,29 +23,29 @@ const LatestPostsSection = ({isPage}:{isPage?:boolean}) => {
 
     fetchGalleryItems();
   }, []);
-  let blog_posts = [
-    {
-      title: "نصيحة عقارية",
-      imageUrl:
-        "https://holoolak.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01KIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d03ad87bc3f437b66ea62a326d6d24cfeb138d48/69913712-23a1-4597-b7c8-4974bed5e327.jpg",
-      date: "2024/05/25",
-      disc: "Lorem ipsum dolor sit amet, consectetur adip",
-    },
-    {
-      title: "نصيحة عقارية",
-      imageUrl:
-        "https://holoolak.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lKIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ac40b9758910715295369215c5b9025080f60c38/WhatsApp%20Image%202024-05-25%20at%205.33.41%20PM.jpeg",
-      date: "2024/05/25",
-      disc: "Lorem ipsum dolor sit amet, consectetur adip",
-    },
-    {
-      title: "الصفقة العقارية الناجحة",
-      imageUrl:
-        "https://holoolak.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VKIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cfcd293d5d5fe124616ad636acad88e69e31c0eb/bb627dc8-7a29-4aee-a9db-95bc874d6629.jpg",
-      date: "2024/05/25",
-      disc: "Lorem ipsum dolor sit amet, consectetur adip",
-    },
-  ];
+  // let blog_posts = [
+  //   {
+  //     title: "نصيحة عقارية",
+  //     imageUrl:
+  //       "https://holoolak.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01KIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d03ad87bc3f437b66ea62a326d6d24cfeb138d48/69913712-23a1-4597-b7c8-4974bed5e327.jpg",
+  //     date: "2024/05/25",
+  //     disc: "Lorem ipsum dolor sit amet, consectetur adip",
+  //   },
+  //   {
+  //     title: "نصيحة عقارية",
+  //     imageUrl:
+  //       "https://holoolak.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lKIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ac40b9758910715295369215c5b9025080f60c38/WhatsApp%20Image%202024-05-25%20at%205.33.41%20PM.jpeg",
+  //     date: "2024/05/25",
+  //     disc: "Lorem ipsum dolor sit amet, consectetur adip",
+  //   },
+  //   {
+  //     title: "الصفقة العقارية الناجحة",
+  //     imageUrl:
+  //       "https://holoolak.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VKIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cfcd293d5d5fe124616ad636acad88e69e31c0eb/bb627dc8-7a29-4aee-a9db-95bc874d6629.jpg",
+  //     date: "2024/05/25",
+  //     disc: "Lorem ipsum dolor sit amet, consectetur adip",
+  //   },
+  // ];
   return (
     <section className="blog text-gray-700 body-font mb-10">
       <div className="container px-5 py-24 mx-auto">

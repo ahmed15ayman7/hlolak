@@ -1,7 +1,6 @@
 "use server";
 import { connectDB } from "@/mongoose";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import  Offers  from '../models/Offers.models';
 
 interface OffersParams {

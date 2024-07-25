@@ -1,7 +1,6 @@
 "use server";
 import { connectDB } from "@/mongoose";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import  Blog  from '../models/blog.models';
 
 interface BlogParams {

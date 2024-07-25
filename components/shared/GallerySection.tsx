@@ -171,7 +171,7 @@ const PhotoGallery = ({
                   title={item.title}
                   img={item.imageUrl}
                   time={format(item.date, "d/M/yyyy")}
-                  link={`/gallery/${item.id}`}
+                  link={`/gallery?id=${item.id}`}
                   />
               </div>
             ))}

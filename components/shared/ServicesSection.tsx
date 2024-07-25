@@ -17,7 +17,7 @@ const ServicesSection: React.FC = () => {
             خدماتنا
           </h1>
           <p className="lg:w-1/2 xl:w-1/2 w-full leading-relaxed text-base">
-            Lorem ipsum dolor sit amet consectetur adipisicing.
+          اكتشف خدماتنا المصممة خصيصاً لتحقيق رضاك
           </p>
         </div>
 <div className=" flex flex-wrap">

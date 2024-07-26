@@ -4,7 +4,7 @@ import React from 'react'
 const CardPost = ({title,img,link,disc,time}:{title:string,img?:string,disc?:string,link:string,time:string,}) => {
   return (
               <div className="p-4 py-8 max-sm:p-2 max-sm:py-4  md:mb-0 mb-6 flex flex-col justify-center items-center " style={{direction:"rtl"}}>
-                <Link className="w-full" href={link}>
+                <div className="w-full" >
                  {img && <div
                     className={`bg-gray-300 h-56  w-full rounded-lg shadow-md bg-cover bg-center`}
                     style={{ backgroundImage: `url(${img})`}}
@@ -26,7 +26,7 @@ const CardPost = ({title,img,link,disc,time}:{title:string,img?:string,disc?:str
                       </time>
                     </div>
                   </div>
-                </Link>
+                </div>
               </div>
   )
 }

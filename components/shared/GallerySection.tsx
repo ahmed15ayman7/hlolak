@@ -144,7 +144,7 @@ const PhotoGallery = ({
                   title={item.title}
                   img={item.imageUrl}
                   time={format(item.date, "d/M/yyyy")}
-                  link={`/gallery?id=${item._id}`}
+                  link={`/galleries?id=${item._id}`}
                   />
               </div>
             ))}
@@ -171,7 +171,7 @@ const PhotoGallery = ({
                   title={item.title}
                   img={item.imageUrl}
                   time={format(item.date, "d/M/yyyy")}
-                  link={`/gallery?id=${item.id}`}
+                  link={`/galleries?id=${item.id}`}
                   />
               </div>
             ))}

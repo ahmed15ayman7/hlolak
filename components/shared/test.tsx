@@ -95,10 +95,10 @@ const Test = ({
   }, [reload]);
   let hoverCards = [1, 2, 3];
   return (
-    <div className="blog text-gray-700 body-font flex items-center justify-center">
+    <div className="blog text-gray-300 body-font flex items-center justify-center">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-300">
             أراء من عملائنا
           </h1>
           <div className="flex">
@@ -111,7 +111,7 @@ const Test = ({
                   navigation.push("/opinion");
                 }
               }}>
-              <h3 className="text-sm font-medium title-font text-gray-900 underline">
+              <h3 className="text-sm font-medium title-font text-gray-400 underline">
                 {add ? "الغاء الاضافه" : " ضف رايك  "}
               </h3>
             </Button>
@@ -124,7 +124,7 @@ const Test = ({
                   navigation.push("/opinion");
                 }
               }}>
-              <h3 className="text-sm font-medium title-font text-gray-900 underline">
+              <h3 className="text-sm font-medium title-font text-gray-400 underline">
                 عرض {showMore ? "أقل" : "المزيد"}
               </h3>
             </Button>

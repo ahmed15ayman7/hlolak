@@ -4,7 +4,7 @@ const ClientStatsSection = () => {
 
 
   return (
-    <section className="blog text-gray-700 body-font flex items-center justify-center">
+    <section className="blog text-gray-300 body-font flex items-center justify-center">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap sm:-m-4 ">
           <div className="p-4 md:w-1/2 md:mb-0 mb-6 flex flex-col justify-center items-center max-w-sm mx-auto">

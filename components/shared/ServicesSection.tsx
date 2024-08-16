@@ -10,10 +10,10 @@ import { usePathname } from "next/navigation";
 const ServicesSection: React.FC = () => {
   let path = usePathname();
   return (
-    <section className="blog text-gray-700 body-font flex items-center justify-center">
+    <section className="blog text-gray-300 body-font flex items-center justify-center">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-300">
             خدماتنا
           </h1>
           <p className="lg:w-1/2 xl:w-1/2 w-full leading-relaxed text-base">
@@ -26,12 +26,12 @@ const ServicesSection: React.FC = () => {
           key={index}
           className="p-4 w-1/4 max-lg:w-1/2 md:mb-0 mb-6 flex flex-col justify-center items-center max-w-sm mx-auto">
             <div
-              className={`flex bg-gray-200 h-32 w-32 rounded-full shadow-md bg-cover bg-center justify-center items-center transition-colors  duration-300 hover:bg-[#ab994e] hover:text-white`}
+              className={`flex bg-gray-500 h-32 w-32 rounded-full shadow-md bg-cover bg-center justify-center items-center transition-colors  duration-300 hover:bg-[#ab994e] hover:text-white`}
               data-aos="fade-down">
               {service.icon}
             </div>
             <div
-              className="w-64 max-sm:w-full bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5"
+              className="w-64 max-sm:w-full bg-gray-700 -mt-10 shadow-lg rounded-lg overflow-hidden p-5"
               data-aos="fade-up">
               <div className="header-content inline-flex">
                 <div

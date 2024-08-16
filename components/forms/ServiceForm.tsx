@@ -62,9 +62,9 @@ const ServiceForm = ({ NameService }: { NameService?: string }) => {
   return (
     <Form {...form}>
       <form
-        className="simple_form p-6 pt-0 bg-white rounded overflow-scroll sm:shadow-2xl"
+        className="simple_form p-6 pt-0 bg-gray-700 rounded overflow-scroll sm:shadow-2xl"
         onSubmit={form.handleSubmit(onsubmit)}>
-        <h2 className="text-lg text-center pt-10 pb-6">
+        <h2 className="text-lg text-gray-300 text-center pt-10 pb-6">
           تمويلك العقاري علينا!
         </h2>
         <FormField
@@ -72,7 +72,7 @@ const ServiceForm = ({ NameService }: { NameService?: string }) => {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className=" text-black"> الاسم</FormLabel>
+              <FormLabel className="  text-gray-300"> الاسم</FormLabel>
               <FormControl>
                 <Input
                   placeholder={` الاسم`}
@@ -96,10 +96,10 @@ const ServiceForm = ({ NameService }: { NameService?: string }) => {
           name="mobile"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className=" text-black"> رقم الجوال</FormLabel>
+              <FormLabel className="text-gray-300"> رقم الجوال</FormLabel>
               <FormControl>
                 <PhoneInput
-                  className={`account-form_input px-2 bg-gray-100 w-full outline-none border rounded-lg h-10 relative transition-all `}
+                  className={`account-form_input px-2  w-full outline-none border rounded-lg h-10 relative transition-all `}
                   name={field.name}
                   disabled={field.disabled}
                   value={field.value}
@@ -123,10 +123,10 @@ const ServiceForm = ({ NameService }: { NameService?: string }) => {
                 disabled={field.disabled}
                 onValueChange={field.onChange}
                 defaultValue={field.value}>
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full bg-gray-500 text-gray-300">
                   <SelectValue placeholder="جهة العمل" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-gray-500 text-gray-300">
                   <SelectGroup>
                     <SelectLabel>جهة العمل</SelectLabel>
                     <SelectItem value="private_sector">قطاع خاص</SelectItem>
@@ -175,10 +175,10 @@ const ServiceForm = ({ NameService }: { NameService?: string }) => {
                 disabled={field.disabled}
                 onValueChange={field.onChange}
                 defaultValue={field.value}>
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full bg-gray-500 text-gray-300">
                   <SelectValue placeholder="نوع الخدمة المقدمة" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className=" bg-gray-500 text-gray-300">
                   <SelectGroup>
                     <SelectLabel>نوع الخدمة المقدمة</SelectLabel>
 

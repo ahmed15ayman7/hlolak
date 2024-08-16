@@ -5,7 +5,7 @@ import { FaTiktok } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
 export default function Footer() {
   return (
-    <footer className="bg-white border-t">
+    <footer className="bg-[#000000] text-white border-t">
       <div className="container mx-auto py-8 flex flex-wrap justify-between">
         <div className="w-1/6  max-md:w-1/3  max-sm:w-1/2 ">
           {/* <h2 className="text-xl font-bold">Logo</h2> */}

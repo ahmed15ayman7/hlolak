@@ -88,10 +88,10 @@ const PhotoGallery = ({
   }, [reload]);
 
   return (
-    <section className="blog text-gray-700 body-font flex items-center justify-center">
+    <section className="blog text-gray-300 body-font flex items-center justify-center">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-700">
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-300">
             معرض الصور
           </h1>
           <div className="flex">
@@ -104,7 +104,7 @@ const PhotoGallery = ({
                   navigation.push("/galleries");
                 }
               }}>
-              <h3 className="text-sm font-medium title-font text-gray-900 underline">
+              <h3 className="text-sm font-medium title-font text-gray-400 underline">
                 {add ? "الغاء الاضافه" : " اضافة صوره "}
               </h3>
             </Button>
@@ -117,7 +117,7 @@ const PhotoGallery = ({
                   navigation.push("/galleries");
                 }
               }}>
-              <h3 className="text-sm font-medium title-font text-gray-900 underline">
+              <h3 className="text-sm font-medium title-font text-gray-400 underline">
                 عرض {showMore ? "أقل" : "المزيد"}
               </h3>
             </Button>

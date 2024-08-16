@@ -13,7 +13,7 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-white  p-2 shadow-lg rounded-lg sticky top-0 z-50 flex flex-nowrap justify-center items-center">
+    <nav className="bg-[#000000]  p-2 shadow-lg rounded-lg sticky top-0 z-50 flex flex-nowrap justify-center items-center">
       <div className="flex justify-between w-full">
         <div className="flex  items-center justify-between h-16 w-full">
           <div className="flex items-center justify-between py-4 px-2 mr-6">
@@ -54,7 +54,7 @@ const NavBar: React.FC = () => {
           </svg>
         </button>
       </div>
-      <div className={`fixed inset-y-0 left-0 z-10 flex-shrink-0 w-80 bg-white border-r-2 border-indigo-100 shadow-lg rounded-tr-3xl rounded-br-3xl overflow-scroll transition-transform duration-300 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={`fixed inset-y-0 left-0 z-10 flex-shrink-0 w-80 bg-[#000000] border-r-2 border-indigo-100 shadow-lg rounded-tr-3xl rounded-br-3xl overflow-scroll transition-transform duration-300 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <nav aria-label="Main" className="flex flex-col h-full">
           <button
           onClick={toggleSidebar}
@@ -108,7 +108,7 @@ type NavItemProps = {
 
     return(
 <Link href={href}>
-    <p className={` flex items-center font-bold border-b-4  px-4 py-4 justify-center transition-colors  ${check||(href==='/'&&pathname==='/')?' border-[#ab994e]':'border-transparent'} ${mobile ? ' text-black hover:bg-[#ab994e] hover:text-white p-2 rounded-lg' : 'h-full'}`}>
+    <p className={` flex items-center text-white font-bold border-b-4  px-4 py-4 justify-center transition-colors  ${check||(href==='/'&&pathname==='/')?' border-[#ab994e]':'border-transparent'} ${mobile ? ' text-black hover:bg-[#ab994e] hover:text-white p-2 rounded-lg' : 'h-full'}`}>
       {text}
     </p>
   </Link>

@@ -115,7 +115,7 @@ const AddGalleryForm = ({setReload}:{setReload:any}) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 pt-6">
-        <h2 className="text-center  " style={{ fontWeight: "bold" }}>
+        <h2 className="text-center text-gray-300  " style={{ fontWeight: "bold" }}>
           {" "}
           اضافة صوره
         </h2>
@@ -164,7 +164,7 @@ const AddGalleryForm = ({setReload}:{setReload:any}) => {
                 <></>
               )}
 
-              <FormLabel className="text-start">اختر الصوره</FormLabel>
+              <FormLabel className="text-start text-gray-300">اختر الصوره</FormLabel>
               <FormControl className="flex-1 text-base-semibold text-gray-200">
                 <Input
                   type="file"
@@ -179,7 +179,7 @@ const AddGalleryForm = ({setReload}:{setReload:any}) => {
           )}
         />
         <div>
-          <Label htmlFor="title">عنوان الصوره</Label>
+          <Label htmlFor="title" className="text-gray-300">عنوان الصوره</Label>
           <Input
             id="title"
             {...form.register("title")}

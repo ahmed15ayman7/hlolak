@@ -4,7 +4,7 @@ import React from 'react';
 
 const PreviewGallery: React.FC = () => {
   return (
-    <section className="blog text-gray-700 body-font mb-10">
+    <section className="blog text-gray-300 body-font mb-10">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">معرض الصور</h1>

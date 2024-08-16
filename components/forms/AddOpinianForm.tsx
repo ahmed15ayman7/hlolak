@@ -55,7 +55,7 @@ const AddOpinianForm = ({ setReload }: { setReload: any }) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 pt-6">
-        <h2 className="text-center  " style={{ fontWeight: "bold" }}>
+        <h2 className="text-center text-gray-300  " style={{ fontWeight: "bold" }}>
           {" "}
           اضافة رأيك؟
         </h2>
@@ -76,7 +76,7 @@ const AddOpinianForm = ({ setReload }: { setReload: any }) => {
           )}
         />
         <div>
-          <Label htmlFor="title">الاسم</Label>
+          <Label htmlFor="title" className="text-gray-300">الاسم</Label>
           <Input
             id="title"
             {...form.register("title")}

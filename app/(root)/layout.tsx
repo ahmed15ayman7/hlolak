@@ -18,15 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      {/* <ProviderRedux> */}
-        <body className={inter.className} dir="rtl">
+  <div className="">
+
           <NavBar />
           {children}
           <Footer />
-          {/* <ChatIcon/> */}
-        </body>
-      {/* </ProviderRedux> */}
-    </html>
+  </div>
+
   );
 }

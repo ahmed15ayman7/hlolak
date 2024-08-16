@@ -50,7 +50,7 @@ const LatestPostsSection = ({isPage}:{isPage?:boolean}) => {
     <section className="blog text-gray-700 body-font mb-10">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-300">
             اخر التدوينات
           </h1>
           <Button
@@ -62,7 +62,7 @@ const LatestPostsSection = ({isPage}:{isPage?:boolean}) => {
                   navigation.push("/blog_posts");
                 }
               }}>
-              <h3 className="text-sm font-medium title-font text-gray-900 underline">
+              <h3 className="text-sm font-medium title-font text-gray-400 underline">
                 عرض {showMore ? "أقل" : "المزيد"}
               </h3>
             </Button>

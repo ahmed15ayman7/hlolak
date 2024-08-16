@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <ProviderRedux> */}
-        <body className={"min-h-full"} dir="rtl">
+        <body className={"min-h-full bg-[#000000]"} dir="rtl">
           {children}
         </body>
       {/* </ProviderRedux> */}
